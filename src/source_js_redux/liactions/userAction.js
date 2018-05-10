@@ -3,7 +3,7 @@ import store from '../store'
 import { darkBlack } from 'material-ui/styles/colors';
 
 export const selectUser = (data,dataObj) => {
-    //console.log('inisde 3',data);
+    
     return{        
             type: "USER_SELECTED",
             payload: data,
@@ -12,7 +12,7 @@ export const selectUser = (data,dataObj) => {
 };
 
 export const sortUser = (sortCol, sortDir) => {
-    //console.log('inisde 3',sortCol,sortDir);
+    
     return{        
             type: "USER_SORT",
             sortColumn: sortCol,

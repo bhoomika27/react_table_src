@@ -108,13 +108,12 @@ class LiUserTable extends Component {
     }
 
     handleChangePage(pageOfItems) {
-        // update state with new page of items~
-        //console.log(pageOfItems);
+        
         this.props.pagination(pageOfItems);
     }
 
     _sortRowsBy(orderBy) {
-        //console.log('insoide',orderBy);
+       
        this.props.sortUser(orderBy,"");
     }
 
@@ -173,7 +172,7 @@ class LiUserTable extends Component {
         statusComp = (this.props.users.statusCombo);
         accStatusComp = (this.props.users.accStatusCombo);
 
-        //console.log(inputComp,selectComp,statusComp,'132456');
+       
 
         for(var i=0; i <= countSearchRow; i++)
         {
@@ -287,7 +286,7 @@ class LiUserTable extends Component {
     }
 
     handleSortChange(event, index, value) {
-        //console.log(value);
+        
         this._sortRowsBy(value);
     }
 
@@ -317,7 +316,7 @@ class LiUserTable extends Component {
                     });
 
         const SearchRowComponent = ((comboID, inputID, cntr) => {
-            //console.log(this.props.users.selectField[comboID + cntr],'asdasdasdasdasdasd132132')
+           
             return(
                     <div className="LiUserTable_searchRow" key={cntr}>
                         <span className="LiUserTable_searchSpan1" id={"type_label_" + cntr}>{(cntr > 0) ? ((this.props.users.selectedOption === 1) ? "AND" : "OR") : ""} </span>

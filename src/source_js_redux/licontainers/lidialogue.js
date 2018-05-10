@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import LiUserTableStore from '../listores/liusertablestore';
 
 import Dialog from 'material-ui/Dialog';
 import UserEditComp from 'useredit-new'; 

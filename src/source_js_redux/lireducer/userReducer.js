@@ -68,52 +68,48 @@ export default function(state333 = initial, action) {
 
         case "HANDLE_OPEN_DELETE":            
             state333 = liHandleOpenDelete(state333, action.payload);
-            //console.log(state333,'insdedd');
-			break;
 
         case "CLOSE_EDIT_DELETE":                
             state333 = liCloseOpenDelete(state333, action.payload);
-            //console.log(state333,'insdedd');
-			break;
         
         case "SET_SLIDE_INDEX":            
             state333 = setSlideindex(state333, action.payload);
-            //console.log(state333,'insdedd');
+           
 			break;
        
         case "HANDLE_ADD_MORE":            
             state333 = handleAddMore(state333, action.count, action.arr);
-            //console.log(state333,'insdedd');
+            
 			break;
 
         case "DELETE_ROW":                
             state333 = handleDeleteRow(state333, action.count, action.arr);
-            //console.log(state333,'insdedd');
+            
 			break;
 
         case "HANDLE_OPTION_CHANGE":                
             state333 = handleOptionChange(state333, action.payload);
-            //console.log(state333,'insdedd');
+            
 			break;
 
         case "HANDLE_INPUT_CHANGE":                
             state333 = handleInputChange(state333, action.inputValue, action.compId);
-            //console.log(state333,'insdedd');
+           
 			break;
 
         case "HANDLE_COMBO_CHANGE":                
             state333 = handleComboChange(state333, action.compValue, action.compId);
-            //console.log(state333,'insdedd');
+            
 			break;
 
         case "HANDLE_STATUS_COMBO_CHANGE":                
             state333 = handleStatusComboChange(state333, action.compValue, action.compId);
-            //console.log(state333,'insdedd');
+            
 			break;
 
         case "HANDLE_ACC_STATUS_COMBO_CHANGE":                
             state333 = handleAcStatusComboChange(state333, action.compValue, action.compId);
-            //console.log(state333,'insdedd');
+            
 			break;
     }
 
@@ -181,27 +177,27 @@ const setSlideindex = (state,value) => {
 const liSortRowsBy = (state22, sortByKey, sortDir) => {
 	console.log(sortByKey, sortDir,'shyammm');
     var sortDir1 = (sortDir !== undefined && sortDir !== "") ? sortDir : state22.sortDir;
-        //console.log("HERE1: "+ sortDir1);
+        
         var sortBy1 = sortByKey;
         if(sortBy1 === state22.sortBy) { // if same key, change the sort direction
-            //console.log("CHECK: "+ sortBy1 + " ==== " + state22.sortBy);
+            
             if(sortDir === undefined || sortDir === "")
             {
-                //console.log("HERE2: "+ sortDir1);
+                
                 sortDir1 = state22.sortDir === 'ASC' ? 'DESC' : 'ASC';
             }
             else
             {
-                //console.log("HERE3: "+ sortDir1);
+                
                 sortDir1 = sortDir;
             }
 
         } else { // initially in the ascending order
             sortDir1 = 'ASC';
-            //console.log("HERE4: "+ sortDir1);
+           
         }
 
-        //console.log("SORT: " + sortBy1 + " === " + sortDir1);        
+        
 
         var rowsSub = state22.sort[0].slice();
         rowsSub.sort((a, b) => {
