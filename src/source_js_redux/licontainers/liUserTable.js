@@ -40,7 +40,39 @@ class LiUserComp extends Component{
 
     render(){
         return(<div>
+<SearchBar
+                                            dataSource={this.props.users.data[0]}
+                                            onRequestSearch={(searchText) => ""}
+                                            onChange={(searchText) => {
+                                                                        var matchedUsersArr = [];
 
+                                                                        this.props.users.data[0].map((usr) => {
+                                                                            if(usr.value.full_name.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
+                                                                            || usr.value.code.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
+                                                                            || usr.value.status.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
+                                                                            || usr.value.dept.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
+                                                                            || usr.value.email.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
+                                                                            || usr.value.extn.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
+                                                                            || usr.value.ac_status.toString().toLowerCase().indexOf(searchText.toLowerCase()) !== -1
+                                                                        ) {
+                                                                            matchedUsersArr.push(usr);
+                                                                        }
+                                                                            return false;
+                                                                        });
+
+                                                                        if(matchedUsersArr.length > 0){
+                                                                            this.props.liSetSearchData(matchedUsersArr);
+                                                                        }
+                                                                        else{
+                                                                            this.props.liSetSearchData(this.convertObjectToArray(this.props.users.dummyUserArr));
+                                                                        }
+                                                                    }
+                                                        }
+                                            style={{
+                                                        margin: '0 auto',
+                                                        maxWidth: 500,
+                                                        boxShadow: '2px 2px 2px 2px #cccccc'
+                                                    }} />
 
             </div>);
     }
@@ -362,39 +394,7 @@ class LiUserTable extends Component {
 
                         <SwipeableViews index={this.props.users.slideIndex} onChangeIndex={this.handleTabChange}>
                             <div className="LiUserTable_basic_search_area">
-                                        <SearchBar
-                                            dataSource={this.props.users.data[0]}
-                                            onRequestSearch={(searchText) => ""}
-                                            onChange={(searchText) => {
-                                                                        var matchedUsersArr = [];
-
-                                                                        this.props.users.data[0].map((usr) => {
-                                                                            if(usr.value.full_name.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
-                                                                            || usr.value.code.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
-                                                                            || usr.value.status.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
-                                                                            || usr.value.dept.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
-                                                                            || usr.value.email.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
-                                                                            || usr.value.extn.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
-                                                                            || usr.value.ac_status.toString().toLowerCase().indexOf(searchText.toLowerCase()) !== -1
-                                                                        ) {
-                                                                            matchedUsersArr.push(usr);
-                                                                        }
-                                                                            return false;
-                                                                        });
-
-                                                                        if(matchedUsersArr.length > 0){
-                                                                            this.props.liSetSearchData(matchedUsersArr);
-                                                                        }
-                                                                        else{
-                                                                            this.props.liSetSearchData(this.convertObjectToArray(this.props.users.dummyUserArr));
-                                                                        }
-                                                                    }
-                                                        }
-                                            style={{
-                                                        margin: '0 auto',
-                                                        maxWidth: 500,
-                                                        boxShadow: '2px 2px 2px 2px #cccccc'
-                                                    }} />
+                                        <LiUserComp/>
                         </div>
                         <div className="LiUserTable_advanced_search_area">
                             {
