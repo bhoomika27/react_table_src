@@ -35,6 +35,16 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 
 const avatarStyle = { margin: 1 };
 
+
+class LiUserComp extends Component{
+
+    render(){
+        return(<div>
+
+
+            </div>);
+    }
+}
 class LiUserTable extends Component {
     constructor(){
         super();
@@ -123,18 +133,8 @@ class LiUserTable extends Component {
 
     doAdvancedSearch() {
         var countSearchRow = this.props.users.countAdvSearchComp;
-        var searchTextName = "";
-        var searchTextCode = "";
-        var searchTextStatus = "";
-        var searchTextCompany = "";
-        var searchTextDept = "";
-        var searchTextEmail  = "";
-        var searchTextExtension = "";
-        var searchTextAcStatus = "";
-        var inputComp = [];
-        var selectComp = [];
-        var statusComp = [];
-        var accStatusComp = [];
+        var searchTextName = "",searchTextCode = "",searchTextStatus = "", searchTextCompany = "", searchTextDept = "",searchTextEmail  = "", searchTextExtension = "",searchTextAcStatus = "";
+        var inputComp = [] ,selectComp = [],statusComp = [],accStatusComp = [];
 
         inputComp = (this.props.users.inputField);
         selectComp = (this.props.users.selectField);
@@ -191,9 +191,7 @@ class LiUserTable extends Component {
         this.props.users.data[0].map((usr) => {
             if(searchType === 1) // AND
             {
-                if(usr.value.full_name.toLowerCase().indexOf(searchTextName.toLowerCase()) !== -1
-                && usr.value.code.toLowerCase().indexOf(searchTextCode.toLowerCase()) !== -1
-                && usr.value.status.toLowerCase().indexOf(searchTextStatus.toLowerCase()) !== -1
+                if(usr.value.full_name.toLowerCase().indexOf(searchTextName.toLowerCase()) !== -1 && usr.value.code.toLowerCase().indexOf(searchTextCode.toLowerCase()) !== -1 && usr.value.status.toLowerCase().indexOf(searchTextStatus.toLowerCase()) !== -1
                 && usr.value.company_name.toLowerCase().indexOf(searchTextCompany.toLowerCase()) !== -1
                 && usr.value.dept.toLowerCase().indexOf(searchTextDept.toLowerCase()) !== -1
                 && usr.value.email.toLowerCase().indexOf(searchTextEmail.toLowerCase()) !== -1
@@ -224,13 +222,8 @@ class LiUserTable extends Component {
             return false;
         });        
 
-        //console.log(matchedUsersArr,'shyam132');
-        if(matchedUsersArr.length > 0){
-            this.props.liSetSearchData(matchedUsersArr);
-        }
-        else{
-            this.props.liSetSearchData(this.convertObjectToArray(this.props.users.dummyUserArr));
-        }
+        matchedUsersArr.length > 0?this.props.liSetSearchData(matchedUsersArr):this.props.liSetSearchData(this.convertObjectToArray(this.props.users.dummyUserArr));
+        
     }
 
     handleInputChange(event) {
@@ -238,7 +231,6 @@ class LiUserTable extends Component {
         const compID = event.target.id;
 
         this.props.handleInputChange(compID, inputValue);
-        //this.setState({ [compID]: inputValue });
     }
 
     handleComboChange(event) {
